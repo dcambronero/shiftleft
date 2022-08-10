@@ -53,8 +53,8 @@ pipeline {
              
             steps {
 
-              sh 'docker build -t cambronero/webapp .'
-              sh 'docker save Cambronero/webapp -o webapp.tar'
+              sh 'docker build -t myweb:latest .'
+              sh 'docker save myweb:latest -o webapp.tar'
               
              } 
            }
