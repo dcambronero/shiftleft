@@ -29,7 +29,7 @@ pipeline {
             
                 sh 'chmod +x shiftleft' 
 
-                sh './shiftleft code-scan -s .'
+                sh './shiftleft code-scan -r -2003 -e b579409a-5b47-4fc9-9d6c-aacbe5313664 -s .'
            
                } catch (Exception e) {
     
@@ -66,7 +66,7 @@ pipeline {
                 script {      
               try {
          
-                    sh './shiftleft image-scan -t 180 -i webapp.tar'
+                    sh './shiftleft image-scan -r -2002 -e b579409a-5b47-4fc9-9d6c-aacbe5313664 -i webapp.tar'
                    } catch (Exception e) {
     
                  echo "Request for Approval"  
@@ -88,7 +88,7 @@ pipeline {
            
             steps {
          
-                    sh './shiftleft iac-assessment -l S3Bucket should have encryption.serverSideEncryptionRules -p ./terraform'
+                    sh './shiftleft iac-assessment -i terraform -p ./terraform/ -r -64 -e b579409a-5b47-4fc9-9d6c-aacbe5313664'
                     
               }
             }
