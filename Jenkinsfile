@@ -53,8 +53,8 @@ pipeline {
              
             steps {
 
-              sh 'docker build -t shiftleft:latest .'
-              sh 'docker save shiftleft -o webapp.tar'
+              sh 'docker build -t Cambronero/webapp .'
+              sh 'docker save Cambronero/webapp -o webapp.tar'
               
              } 
            }
