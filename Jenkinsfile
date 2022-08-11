@@ -3,6 +3,7 @@ pipeline {
       environment {
            CHKP_CLOUDGUARD_ID = credentials("CHKP_CLOUDGUARD_ID")
            CHKP_CLOUDGUARD_SECRET = credentials("CHKP_CLOUDGUARD_SECRET")
+	     SPECTRAL_DSN = credentials("spectral-dsn")
         }
         
   stages {
@@ -74,7 +75,7 @@ pipeline {
                 }  
              }
           }
-            
+          
        stage('Container image approval request') {
      
            steps {
@@ -83,7 +84,22 @@ pipeline {
               }
             }
           }
-        
+        stage('install Spectral') {
+      steps {
+        sh "curl -L 'https://get.spectralops.io/latest/x/sh?dsn=$SPECTRAL_DSN' | sh"
+      }
+    }
+    stage('scan for issues') {
+      steps {
+        sh "$HOME/.spectral/spectral scan --ok --include-tags base,audit,iac"
+      }
+    }
+    stage('build') {
+      steps {
+        // your build scripts
+        sh "./build.sh"
+      }
+    }
       stage('Terraform config policy Scan') {    
            
             steps {
