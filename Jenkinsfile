@@ -94,12 +94,7 @@ pipeline {
         sh "$HOME/.spectral/spectral scan --ok --include-tags base,audit,iac"
       }
     }
-    stage('build') {
-      steps {
-        // your build scripts
-        sh "./build.sh"
-      }
-    }
+
       stage('Terraform config policy Scan') {    
            
             steps {
