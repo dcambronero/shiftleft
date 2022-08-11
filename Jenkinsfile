@@ -3,7 +3,7 @@ pipeline {
       environment {
            CHKP_CLOUDGUARD_ID = credentials("CHKP_CLOUDGUARD_ID")
            CHKP_CLOUDGUARD_SECRET = credentials("CHKP_CLOUDGUARD_SECRET")
-	     SPECTRAL_DSN = credentials("spectral-dsn")
+	   SPECTRAL_DSN = credentials("spectral-dsn")
         }
         
   stages {
