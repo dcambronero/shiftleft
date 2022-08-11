@@ -1,5 +1,6 @@
 # Check Point CloudGuard ShiftLeft integration with Jenkins CICD pipeline:
-
+This repo was developed by https://github.com/chkp-dhouari/CloudGuard-ShiftLeft-CICD
+This is an enviroment for personal testing only.
 ## ![header image](warning.jpeg) This demo contains Malware so please do not use in a production environment and Handle with Care
 
 
