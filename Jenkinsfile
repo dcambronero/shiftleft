@@ -30,7 +30,7 @@ pipeline {
             
                 sh 'chmod +x shiftleft' 
 
-                sh './shiftleft code-scan -r -2003 -e b579409a-5b47-4fc9-9d6c-aacbe5313664 -s .'
+                sh './shiftleft code-scan -r -2003 -e d1c2bd74-b253-4b35-8ff0-fbfbdf060635 -s .'
            
                } catch (Exception e) {
     
@@ -67,7 +67,7 @@ pipeline {
                 script {      
               try {
          
-                    sh './shiftleft image-scan -r -2002 -e b579409a-5b47-4fc9-9d6c-aacbe5313664 -i webapp.tar'
+                    sh './shiftleft image-scan -r -2002 -e d1c2bd74-b253-4b35-8ff0-fbfbdf060635 -i webapp.tar'
                    } catch (Exception e) {
     
                  echo "Request for Approval"  
