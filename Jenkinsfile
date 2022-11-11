@@ -39,6 +39,7 @@ pipeline {
                 script {      
               try {
          
+		    sh 'chmod +x shiftleft'
                     sh './shiftleft image-scan -r -2002 -e b579409a-5b47-4fc9-9d6c-aacbe5313664 -i webapp.tar'
                    } catch (Exception e) {
     
