@@ -19,35 +19,7 @@ pipeline {
   
           }
           
-    stage('ShiftLeft Code Scan') {   
-       steps {   
-                   
-         script {      
-              try {
-
-             
-                
-            
-                sh 'chmod +x shiftleft' 
-
-                sh './shiftleft code-scan -r -2003 -e b579409a-5b47-4fc9-9d6c-aacbe5313664 -s .'
-           
-               } catch (Exception e) {
     
-                 echo "Request for Approval"  
-                  }
-              }
-            }
-         }
-         
-     stage('Code approval request') {
-     
-           steps {
-             script {
-               def userInput = input(id: 'confirm', message: 'Do you Approve to use this code?', parameters: [ [$class: 'BooleanParameterDefinition', defaultValue: false, description: 'Approve Code to Proceed', name: 'approve'] ])
-              }
-            }
-          }
            
            
           stage('webapp Docker image Build and scan prep') {
@@ -95,14 +67,7 @@ pipeline {
       }
     }
 
-      stage('Terraform config policy Scan') {    
-           
-            steps {
-         
-                    sh './shiftleft iac-assessment -i terraform -p ./terraform/ -r -64 -e b579409a-5b47-4fc9-9d6c-aacbe5313664'
-                    
-              }
-            }
+      
   } 
 }
 
