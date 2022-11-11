@@ -86,7 +86,7 @@ pipeline {
           }
         stage('install Spectral') {
       steps {
-        sh "curl -L 'https://get.spectralops.io/latest/x/sh?dsn=$SPECTRAL_DSN' | sh"
+        sh "curl -L 'https://spectral-us.dome9.com/latest/x/sh?dsn=$SPECTRAL_DSN' | sh"
       }
     }
     stage('scan for issues') {
