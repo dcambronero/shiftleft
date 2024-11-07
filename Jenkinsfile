@@ -27,12 +27,6 @@ pipeline {
             }
         }
         
-        stage('Build') {
-            steps {
-                // Aquí puedes poner tus scripts de construcción
-                sh "./build.sh"
-            }
-        }
         
         stage('Webapp Docker Image Build and Scan Prep') {
             steps {
