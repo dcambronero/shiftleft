@@ -16,6 +16,13 @@ steps:
   displayName: 'Install Spectral'
 - script: $HOME/.spectral/spectral scan --ok --dsn $(SPECTRAL_DSN) --engines secrets,iac,oss --include-tags base,audit3,iac
   displayName: 'Spectral Scan'
+
+# Docker Image Build and Save
+- script: |
+    docker build -t myweb:latest .
+    docker save myweb:latest -o webapp.tar
+  displayName: 'Build Docker Image and Save as TAR'
+  
 # ShiftLeft Container Image Scan stage
 - script: |
     chmod +x ./shiftleft
