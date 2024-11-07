@@ -9,12 +9,6 @@ pipeline {
     
     stages {
         
-        stage('Clone Github repository') {
-            steps {
-                checkout scm
-            }
-        }
-        
         stage('Install Spectral') {
             steps {
                 sh "curl -L 'https://spectral-us.checkpoint.com/latest/x/sh?dsn=$SPECTRAL_DSN' | sh"
@@ -27,6 +21,12 @@ pipeline {
             }
         }
         
+        stage('Build') {
+            steps {
+                // Aquí puedes poner tus scripts de construcción
+                sh "./build.sh"
+            }
+        }
         
         stage('Webapp Docker Image Build and Scan Prep') {
             steps {
@@ -40,7 +40,7 @@ pipeline {
                 script {      
                     try {
                         sh 'chmod +x shiftleft'
-                        sh './shiftleft image-scan -r 2002 -e 94fddd65-708a-4dc1-bac8-002fd35e34bf -i webapp.tar'
+                        sh './shiftleft image-scan -e 94fddd65-708a-4dc1-bac8-002fd35e34bf -i webapp.tar'
                     } catch (Exception e) {
                         echo "Request for Approval"
                     }
