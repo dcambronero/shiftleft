@@ -26,6 +26,6 @@ steps:
 # ShiftLeft Container Image Scan stage
 - script: |
     chmod +x ./shiftleft
-    ./shiftleft image-scan -e 94fddd65-708a-4dc1-bac8-002fd35e34bf -i webapp.tar
+    ./shiftleft image-scan -r 2002 -e 94fddd65-708a-4dc1-bac8-002fd35e34bf -i webapp.tar
   displayName: 'ShiftLeft Container Image Scan'
   continueOnError: true  # Permite que continúe aunque el escaneo falle
